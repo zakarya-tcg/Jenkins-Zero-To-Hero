@@ -1,4 +1,4 @@
-FROM openjdk:21-jre-slim
+FROM openjdk:21-jdk-slim
 
 # Simply the artifact path
 ARG artifact=target/spring-boot-web.jar
