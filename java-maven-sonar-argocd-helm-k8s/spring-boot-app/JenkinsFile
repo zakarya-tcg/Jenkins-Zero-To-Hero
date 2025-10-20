@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'zakaryalakbaidi/maven-java21-docker'  // Java 21 inclus
+            image 'zakaryalakbaidi/maven-java21-docker: v1'  // Java 21 inclus
             args '-v /root/.m2:/root/.m2 -u root'
             reuseNode true
         }
