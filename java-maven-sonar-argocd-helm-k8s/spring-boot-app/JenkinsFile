@@ -25,7 +25,7 @@ pipeline {
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh ''' '''
+          sh ''' 
                 export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
                 export PATH=$JAVA_HOME/bin:$PATH
                 echo "=== Updated Java Version ==="
