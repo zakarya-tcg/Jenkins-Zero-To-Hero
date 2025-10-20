@@ -25,13 +25,16 @@ pipeline {
       }
       steps {
         withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-          sh ''' echo "=== Java Version Check ==="
+          sh ''' '''
+                export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+                export PATH=$JAVA_HOME/bin:$PATH
+                echo "=== Updated Java Version ==="
                 java -version
-                echo "=== Maven Version ==="
+                echo "=== Updated Maven Version ==="
                 mvn --version
-                echo "=== Running SonarQube Analysis ==="
                 cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-                mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}'''
+                mvn sonar:sonar -Dsonar.login=$SONAR_AUTH_TOKEN -Dsonar.host.url=${SONAR_URL}
+            '''
         }
       }
     }
