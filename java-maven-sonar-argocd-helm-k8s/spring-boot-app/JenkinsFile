@@ -33,7 +33,7 @@ pipeline {
                 echo "=== Updated Maven Version ==="
                 mvn --version
                 cd java-maven-sonar-argocd-helm-k8s/spring-boot-app
-               mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar
+                mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.9.1.2184:sonar
             '''
         }
       }
