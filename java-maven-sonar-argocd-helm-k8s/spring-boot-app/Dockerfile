@@ -1,6 +1,10 @@
 FROM openjdk:21-jdk-slim
-ARG artifact=target/spring-boot-web.jar
 WORKDIR /opt/app
-COPY ${artifact} app.jar
-RUN test -f /opt/app/app.jar && echo "✅ Fichier vérifié avec succès" || (echo "❌ Fichier manquant" && exit 1)
+
+# Solution générique - copie TOUS les fichiers JAR
+COPY target/*.jar app.jar
+
+# Vérification
+RUN ls -la /opt/app/app.jar && echo "✅ Build réussi!"
+
 ENTRYPOINT ["java","-jar","app.jar"]
